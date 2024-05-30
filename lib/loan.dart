@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,6 +18,7 @@ class Screen7 extends StatefulWidget {
 class _Screen7State extends State<Screen7> {
   @override
   bool ischecked = false;
+  RangeValues value = RangeValues(0, 100);
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,16 +103,27 @@ class _Screen7State extends State<Screen7> {
                     Padding(
                       padding: const EdgeInsets.only(left: 230),
                       child: SizedBox(
-                          width: 100, child: ClipRRect(
-                          borderRadius:BorderRadius.only(topRight: Radius.circular(10)),child: Image.asset("assets/f.png",fit: BoxFit.cover,))),
+                          width: 100,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10)),
+                              child: Image.asset(
+                                "assets/f.png",
+                                fit: BoxFit.cover,
+                              ))),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 85),
                       child: SizedBox(
                           width: 100,
                           height: 55,
-                          child: ClipRRect(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10)),
-                              child: Image.asset("assets/g.png",fit: BoxFit.cover,))),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10)),
+                              child: Image.asset(
+                                "assets/g.png",
+                                fit: BoxFit.cover,
+                              ))),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 17, left: 15),
@@ -252,57 +266,27 @@ class _Screen7State extends State<Screen7> {
                                                         ),
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              top: 10),
-                                                      child: RangeSliderFlutter(
-                                                        // key: Key('3343'),
-                                                        values: [1, 100],
-                                                        rangeSlider: true,
-                                                        jump: true,
-                                                        tooltip:
-                                                            RangeSliderFlutterTooltip(
-                                                          alwaysShowTooltip:
-                                                              true,
-                                                        ),
-                                                        max: 20000,
-                                                        textPositionTop: -100,
-                                                        handlerHeight: 30,
-                                                        trackBar:
-                                                            RangeSliderFlutterTrackBar(
-                                                          activeTrackBarHeight:
-                                                              10,
-                                                          inactiveTrackBarHeight:
-                                                              10,
-                                                          activeTrackBar:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                            color: Colors.red,
-                                                          ),
-                                                          inactiveTrackBar:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                            color: Colors.grey,
-                                                          ),
-                                                        ),
-
+                                                    SizedBox(
+                                                      width: 400,
+                                                      height: 40,
+                                                      child: RangeSlider(
+                                                        activeColor:
+                                                            Color(0xFFFF0083),
                                                         min: 0,
-                                                        fontSize: 15,
-                                                        textBackgroundColor:
-                                                            Colors.red,
-                                                        onDragging:
-                                                            (handlerIndex,
-                                                                lowerValue,
-                                                                upperValue) {
-                                                          setState(() {});
-                                                        },
+                                                        max: 90,
+                                                        values: value,
+                                                        labels: RangeLabels(
+                                                          value.start
+                                                              .toString(),
+                                                          value.end.toString(),
+                                                        ),
+                                                        onChanged: (newValue)
+                                                             {
+                                                               if(value.start !=newValue.start)return;
+                                                               setState((){
+                                                                 value=newValue;
+                                                               });
+                                                             },
                                                       ),
                                                     ),
                                                     Padding(
@@ -541,24 +525,33 @@ class _Screen7State extends State<Screen7> {
                                                     ),
                                                     TextButton(
                                                       onPressed: () {
-                                                        showModalBottomSheet<void>(
+                                                        showModalBottomSheet<
+                                                            void>(
                                                           context: context,
-                                                          isScrollControlled: true,
-                                                          builder: (BuildContextcontext) {
+                                                          isScrollControlled:
+                                                              true,
+                                                          builder:
+                                                              (BuildContextcontext) {
                                                             return SizedBox(
                                                               height: 760,
                                                               child: Center(
                                                                 child: Column(
-                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
                                                                   children: <Widget>[
                                                                     Padding(
-                                                                      padding: const EdgeInsets.only(bottom: 15),
-                                                                      child: Text(
+                                                                      padding: const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              15),
+                                                                      child:
+                                                                          Text(
                                                                         " That was way to easy!",
                                                                         style:
                                                                             TextStyle(
-                                                                          color: Colors
-                                                                              .black,
+                                                                          color:
+                                                                              Colors.black,
                                                                           fontSize:
                                                                               18,
                                                                           fontWeight:
@@ -573,16 +566,19 @@ class _Screen7State extends State<Screen7> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsets.only(bottom: 35),
-                                                                      child: Text(
+                                                                      padding: const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              35),
+                                                                      child:
+                                                                          Text(
                                                                         'Congratulations!',
                                                                         textAlign:
-                                                                            TextAlign
-                                                                                .center,
+                                                                            TextAlign.center,
                                                                         style:
                                                                             TextStyle(
-                                                                          color: Color(
-                                                                              0xFF1F1F1F),
+                                                                          color:
+                                                                              Color(0xFF1F1F1F),
                                                                           fontSize:
                                                                               40,
                                                                           fontFamily:
@@ -595,8 +591,12 @@ class _Screen7State extends State<Screen7> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsets.only(bottom: 10),
-                                                                      child: CircleAvatar(
+                                                                      padding: const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              10),
+                                                                      child:
+                                                                          CircleAvatar(
                                                                         backgroundColor: Colors
                                                                             .green
                                                                             .shade100,
@@ -608,22 +608,25 @@ class _Screen7State extends State<Screen7> {
                                                                               .done,
                                                                           size:
                                                                               50,
-                                                                          color: Colors
-                                                                              .green,
+                                                                          color:
+                                                                              Colors.green,
                                                                         ),
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsets.only(bottom: 30),
-                                                                      child: Text(
+                                                                      padding: const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              30),
+                                                                      child:
+                                                                          Text(
                                                                         'Transaction Summary',
                                                                         textAlign:
-                                                                            TextAlign
-                                                                                .center,
+                                                                            TextAlign.center,
                                                                         style:
                                                                             TextStyle(
-                                                                          color: Color(
-                                                                              0xFF1F1F1F),
+                                                                          color:
+                                                                              Color(0xFF1F1F1F),
                                                                           fontSize:
                                                                               28,
                                                                           fontFamily:
@@ -645,108 +648,136 @@ class _Screen7State extends State<Screen7> {
                                                                               .white60,
                                                                           shape:
                                                                               RoundedRectangleBorder()),
-                                                                      child: Padding(
-                                                                        padding: const EdgeInsets.only(left: 10),
-                                                                        child: Row(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .only(
+                                                                            left:
+                                                                                10),
+                                                                        child:
+                                                                            Row(
                                                                           children: [
-                                                                            Text( 'Next Repayment Date: \nInterest Rate:\nMonthly Repayment:\nNo of Payments:\nReason\nTotal Payback Amount:', style: TextStyle(
-                                                                              color: Color(0xFF7F8790),
-                                                                              fontSize: 20,
-                                                                              fontFamily: 'Poppins',
-                                                                              fontWeight: FontWeight.w300,
-                                                                              height: 2,
-                                                                            ),),
-                                                                            SizedBox(width: 55,),
-                                                                            Text('02/04/2023\n10 %\n\$5,000.00\n2\nEmergency Bills\n\$ 10,050.00', style: TextStyle(
-                                                                              color: Colors.black,
-                                                                              fontSize: 20,
-                                                                              fontFamily: 'Poppins',
-                                                                              fontWeight: FontWeight.w300,
-                                                                              height: 2,
-                                                                            ),),
+                                                                            Text(
+                                                                              'Next Repayment Date: \nInterest Rate:\nMonthly Repayment:\nNo of Payments:\nReason\nTotal Payback Amount:',
+                                                                              style: TextStyle(
+                                                                                color: Color(0xFF7F8790),
+                                                                                fontSize: 20,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontWeight: FontWeight.w300,
+                                                                                height: 2,
+                                                                              ),
+                                                                            ),
+                                                                            SizedBox(
+                                                                              width: 55,
+                                                                            ),
+                                                                            Text(
+                                                                              '02/04/2023\n10 %\n\$5,000.00\n2\nEmergency Bills\n\$ 10,050.00',
+                                                                              style: TextStyle(
+                                                                                color: Colors.black,
+                                                                                fontSize: 20,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontWeight: FontWeight.w300,
+                                                                                height: 2,
+                                                                              ),
+                                                                            ),
                                                                           ],
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    SizedBox(height: 50,),
-                                                                    TextButton(onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (_)=>Screen8()));},
-                                                                      child: Container(
-                                                                        width: 316,
-                                                                        height: 60,
+                                                                    SizedBox(
+                                                                      height:
+                                                                          50,
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.of(context).push(MaterialPageRoute(
+                                                                            builder: (_) =>
+                                                                                Screen8()));
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            316,
+                                                                        height:
+                                                                            60,
                                                                         decoration:
-                                                                        ShapeDecoration(
+                                                                            ShapeDecoration(
                                                                           color:
-                                                                          Color(0xFFFF0083),
+                                                                              Color(0xFFFF0083),
                                                                           shape:
-                                                                          RoundedRectangleBorder(
+                                                                              RoundedRectangleBorder(
                                                                             borderRadius:
-                                                                            BorderRadius
-                                                                                .circular(
-                                                                                30),
+                                                                                BorderRadius.circular(30),
                                                                           ),
                                                                         ),
-                                                                        child: Center(
-                                                                          child: Text(
+                                                                        child:
+                                                                            Center(
+                                                                          child:
+                                                                              Text(
                                                                             'Accept',
-                                                                            textAlign: TextAlign
-                                                                                .center,
-                                                                            style: TextStyle(
-                                                                              color: Color(
-                                                                                  0xFFFFF2F2),
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: Color(0xFFFFF2F2),
                                                                               fontSize: 20,
-                                                                              fontFamily:
-                                                                              'Poppins',
-                                                                              fontWeight:
-                                                                              FontWeight
-                                                                                  .w600,
+                                                                              fontFamily: 'Poppins',
+                                                                              fontWeight: FontWeight.w600,
                                                                               height: 0.07,
-                                                                              letterSpacing:
-                                                                              0.06,
+                                                                              letterSpacing: 0.06,
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-
                                                                     Padding(
-                                                                      padding: const EdgeInsets.only(top: 20),
-                                                                      child: Container(
-                                                                        width: 316,
-                                                                        height: 60,
-                                                                        decoration:
-                                                                        ShapeDecoration(
-                                                                          color:
-                                                                         Colors.black,
-                                                                          shape:
-                                                                          RoundedRectangleBorder(
-                                                                            borderRadius: BorderRadius.circular(30),
+                                                                      padding: const EdgeInsets
+                                                                          .only(
+                                                                          top:
+                                                                              20),
+                                                                      child:
+                                                                          TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.of(context).pushAndRemoveUntil(
+                                                                              MaterialPageRoute(builder: (context) => Screen7()),
+                                                                              (route) => false);
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              316,
+                                                                          height:
+                                                                              60,
+                                                                          decoration:
+                                                                              ShapeDecoration(
+                                                                            color:
+                                                                                Colors.black,
+                                                                            shape:
+                                                                                RoundedRectangleBorder(
+                                                                              borderRadius: BorderRadius.circular(30),
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                        child: Center(
-                                                                          child: Text(
-                                                                            'Decline',
-                                                                            textAlign: TextAlign
-                                                                                .center,
-                                                                            style: TextStyle(
-                                                                              color: Color(
-                                                                                  0xFFFFF2F2),
-                                                                              fontSize: 20,
-                                                                              fontFamily:
-                                                                              'Poppins',
-                                                                              fontWeight:
-                                                                              FontWeight
-                                                                                  .w600,
-                                                                              height: 0.07,
-                                                                              letterSpacing:
-                                                                              0.06,
+                                                                          child:
+                                                                              Center(
+                                                                            child:
+                                                                                Text(
+                                                                              'Decline',
+                                                                              textAlign: TextAlign.center,
+                                                                              style: TextStyle(
+                                                                                color: Color(0xFFFFF2F2),
+                                                                                fontSize: 20,
+                                                                                fontFamily: 'Poppins',
+                                                                                fontWeight: FontWeight.w600,
+                                                                                height: 0.07,
+                                                                                letterSpacing: 0.06,
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-
-
-
                                                                   ],
                                                                 ),
                                                               ),
