@@ -273,13 +273,14 @@ class _Screen7State extends State<Screen7> {
                                                         activeColor:
                                                             Color(0xFFFF0083),
                                                         min: 0,
-                                                        max: 90,
+                                                        max: 100,
                                                         values: value,
                                                         labels: RangeLabels(
-                                                          value.start
+                                                          value.start.round()
                                                               .toString(),
-                                                          value.end.toString(),
+                                                          value.end.round().toString(),
                                                         ),
+                                                        divisions: 100,
                                                         onChanged: (newValue)
                                                              {
                                                                if(value.start !=newValue.start)return;

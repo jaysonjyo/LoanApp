@@ -22,7 +22,7 @@ class _Screen1State extends State<Screen1> {
     'Pay Bills such as Electricity, Water bill, TV \nsubscriptions etc. \nBuy airtime & Bundles.',
     'Even with insufficient balance, Pay by\n Phone at Merchants with Pay Fast\nAccounts.',
   ];
-  int curentIndex=0;
+  int  curentIndex=0;
   final CarouselController _controller=CarouselController();
 
   @override
